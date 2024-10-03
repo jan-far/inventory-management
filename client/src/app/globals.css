@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+  @apply text-sm;
+  @apply bg-gray-50;
+  @apply text-gray-900;
+}
+
+.dark .data-grid {
+  --DataGrid-containerBackground: theme('colors.gray.950');
+}
+
+.data-grid .MuiButtonBase-root {
+  @apply text-gray-700;
+}
+
+.data-grid .MuiDataGrid-columnHeaders,
+.data-grid .MuiTablePagination-root,
+.data-grid .MuiTablePagination-actions > button {
+  @apply text-gray-700;
+}
+
+.data-grid .MuiDataGrid-columnHeaderTitle,
+.data-grid .MuiTablePagination-root {
+  @apply font-bold;
+}
+
+@media (min-width: 768px) {
+  .custom-grid-rows {
+    grid-template-rows: repeat(8, 20vh);
+  }
+}
+
+@media (min-width: 1280px) {
+  .custom-grid-rows {
+    grid-template-rows: repeat(8, 7.5vh);
+  }
+}
