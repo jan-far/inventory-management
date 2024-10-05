@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+  @apply text-sm;
+  @apply bg-gray-50;
+  @apply text-gray-900;
+}
+
+.dark .data-grid {
+  --DataGrid-containerBackground: theme('colors.gray.950');
+}
+
+.data-grid .MuiButtonBase-root {
+  @apply text-gray-700;
+}
+
+.data-grid .MuiDataGrid-columnHeaders,
+.data-grid .MuiTablePagination-root,
+.data-grid .MuiTablePagination-actions > button {
+  @apply text-gray-700;
+}
+
+.data-grid .MuiDataGrid-columnHeaderTitle,
+.data-grid .MuiTablePagination-root {
+  @apply font-bold;
+}
+
+.spinner {
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(farthest-side, #766df4 90%, #0000) center/16px
+      16px,
+    radial-gradient(farthest-side, #6f6d91 90%, #0000) bottom/12px 12px;
+  background-repeat: no-repeat;
+  animation: s7 1s infinite linear;
+  position: relative;
+}
+.spinner::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  inset: auto 0 16px;
+  margin: auto;
+  background: #e4e4ed;
+  border-radius: 50%;
+  transform-origin: 50% calc(100% + 10px);
+  animation: inherit;
+  animation-duration: 0.5s;
+}
+
+@keyframes s7 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+@media (min-width: 768px) {
+  .custom-grid-rows {
+    grid-template-rows: repeat(8, 20vh);
+  }
+}
+
+@media (min-width: 1280px) {
+  .custom-grid-rows {
+    grid-template-rows: repeat(8, 7.5vh);
+  }
+}
