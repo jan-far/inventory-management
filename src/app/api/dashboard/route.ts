@@ -1,7 +1,7 @@
 import {prisma} from '@/lib/prisma';
 import {NextResponse} from 'next/server';
 
-export const GET = async (req: Request) => {
+export const GET = async () => {
   try {
     const popularProducts = await prisma.products.findMany({
       take: 15,
@@ -50,10 +50,12 @@ export const GET = async (req: Request) => {
       expenseSummary,
       expenseByCategorySummary,
     });
-  } catch (error) {
-    return NextResponse.json(
-      {message: 'Error retrieving dashboard metrics'},
-      {status: 500},
-    );
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return NextResponse.json(
+        {message: 'Error retrieving dashboard metrics'},
+        {status: 500},
+      );
+    }
   }
 };

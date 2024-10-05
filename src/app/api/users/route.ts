@@ -5,10 +5,12 @@ export const GET = async () => {
   try {
     const users = await prisma.users.findMany();
     return NextResponse.json(users);
-  } catch (error) {
-    return NextResponse.json(
-      {message: 'Error retrieving users'},
-      {status: 500},
-    );
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return NextResponse.json(
+        {message: error.message || 'Error retrieving products'},
+        {status: 500},
+      );
+    }
   }
 };

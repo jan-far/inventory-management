@@ -16,10 +16,12 @@ export const GET = async () => {
     }));
 
     return NextResponse.json(expenseByCategorySummary);
-  } catch (error) {
-    return NextResponse.json(
-      {message: 'Error retrieving expenses by category'},
-      {status: 500},
-    );
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return NextResponse.json(
+        {message: 'Error retrieving expenses by category'},
+        {status: 500},
+      );
+    }
   }
 };

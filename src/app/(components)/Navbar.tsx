@@ -6,9 +6,7 @@ import {isDarkModeSelector} from '@/state/selectors';
 import {Bell, Menu, Moon, Settings, Sun, User} from 'lucide-react';
 import Link from 'next/link';
 
-type Props = {};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const dispatch = useAppDispatch();
   const isDarkMode = useAppSelector(isDarkModeSelector);
 

@@ -13,11 +13,13 @@ export const GET = async (req: Request) => {
       },
     });
     return NextResponse.json(products);
-  } catch (error) {
-    return NextResponse.json(
-      {message: 'Error retrieving products'},
-      {status: 500},
-    );
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return NextResponse.json(
+        {message: error.message || 'Error retrieving products'},
+        {status: 500},
+      );
+    }
   }
 };
 
@@ -34,10 +36,12 @@ export const POST = async (req: Request) => {
       },
     });
     return NextResponse.json(product, {status: 201});
-  } catch (error) {
-    return NextResponse.json(
-      {message: 'Error creating product'},
-      {status: 500},
-    );
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return NextResponse.json(
+        {message: error.message || 'Error creating product'},
+        {status: 500},
+      );
+    }
   }
 };
