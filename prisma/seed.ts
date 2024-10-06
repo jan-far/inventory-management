@@ -10,6 +10,9 @@ async function deleteAllData(orderedFileNames: string[]) {
   });
 
   for (const modelName of modelNames) {
+    console.log('====================================');
+    console.log(modelName);
+    console.log('====================================');
     const model: any = prisma[modelName as keyof typeof prisma];
     if (model) {
       await model.deleteMany({});

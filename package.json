@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
@@ -38,7 +41,8 @@
     "postcss": "^8",
     "prisma": "^5.20.0",
     "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
     "tw-colors": "^3.3.2",
-    "typescript": "^5"
+    "typescript": "^5.6.2"
   }
 }
